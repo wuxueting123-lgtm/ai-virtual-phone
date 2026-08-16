@@ -20,14 +20,9 @@ function resolveDistDir() {
 const nextConfig = {
   typedRoutes: true,
   outputFileTracingRoot: projectRoot,
-  distDir: "out",
-  images: {
-    unoptimized: true
-  },
   eslint: {
     ignoreDuringBuilds: true
   },
-  output: "export",
   typescript: {
     ignoreBuildErrors: true
   },
