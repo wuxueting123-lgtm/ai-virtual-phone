@@ -9,6 +9,7 @@ import {
 import { ACCOUNT_GATE_COOKIE } from "@/lib/account-cookie-constants";
 import { createAccountGateCookieValue } from "@/lib/account-gate-cookie";
 import { formatSupabaseRestError, getSupabaseServerConfig } from "@/lib/server/supabase-rest";
+export const dynamic = 'force-static'
 
 function authSetupError(message: string): string {
   if (/app_users|activation_codes|app_sessions|schema cache|does not exist|PGRST/i.test(message)) {
