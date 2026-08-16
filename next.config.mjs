@@ -23,18 +23,15 @@ function resolveDistDir() {
 const nextConfig = {
   typedRoutes: true,
   outputFileTracingRoot: projectRoot,
-  distDir: 'out'，
-  images:{unoptimized:true},
-    //resolveDistDir(),
+  distDir: "out",
+  images: {
+    unoptimized: true,
+  },
   eslint: {
     ignoreDuringBuilds: true,
   },
-  output:'export'，
-  
+  output: "export",
   typescript: {
-    // 项目有若干历史 TS 错误（chat-message-list 缺模块、weixin 路由 socket 字段、
-    // world-builder SceneViewport prop 不匹配 等），不影响 dev 但 production build 会卡。
-    // 跳过 typecheck 让 build 通过；IDE 和 `npx tsc --noEmit` 仍能看到错误。
     ignoreBuildErrors: true,
   },
   outputFileTracingIncludes: {
@@ -42,9 +39,6 @@ const nextConfig = {
   },
   webpack: (config, { isServer, webpack }) => {
     if (!isServer) {
-      // @gltf-transform/core 的 dist 引用 node:fs / node:path(带 node: 前缀),
-      // 它的 browser 字段只映射了裸 fs/path,webpack 对 node: 前缀报 UnhandledSchemeError。
-      // 客户端包里剥掉前缀,再用 fallback 置空(浏览器路径实际只用 WebIO,不会真调 fs)。
       config.plugins.push(
         new webpack.NormalModuleReplacementPlugin(/^node:/, (resource) => {
           resource.request = resource.request.replace(/^node:/, "");
