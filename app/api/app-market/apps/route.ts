@@ -7,7 +7,7 @@ import { getModeratorContext } from "@/lib/server/admin-auth";
 import { encodeSupabaseFilter, formatSupabaseRestError, getSupabaseServerConfig, supabaseRestFetch } from "@/lib/server/supabase-rest";
 import type { CustomAppManifest, CustomAppPermission } from "@/lib/custom-app-types";
 import type { CustomAppMarketItem, CustomAppPackageKind, CustomAppReviewStatus } from "@/lib/custom-app-market-types";
-
+export const dynamic = 'force-static'
 /* 注意:此处不含 package_hash——存量库可能还没跑新版 SQL 加列,主读路径不能因此挂掉;
    哈希只在 validateMarketConflicts 里单独查询,列缺失时自动降级跳过查重。 */
 const REST_APP_COLUMNS = "id,app_id,name,version,changelog,description,icon_data_url,permissions,manifest,package_url,package_path,package_kind,package_size,author_id,author_name,author_avatar,review_status,install_count,like_count,created_at,updated_at";
