@@ -23,13 +23,13 @@ function resolveDistDir() {
 const nextConfig = {
   typedRoutes: true,
   outputFileTracingRoot: projectRoot,
-  distDir: ＇out＇，
-  images：{unoptimized:true},
+  distDir: 'out'，
+  images:{unoptimized:true},
     //resolveDistDir(),
   eslint: {
     ignoreDuringBuilds: true,
   },
-  output:＇export＇，
+  output:'export'，
   
   typescript: {
     // 项目有若干历史 TS 错误（chat-message-list 缺模块、weixin 路由 socket 字段、
